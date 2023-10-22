@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="UK" xmlns="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="${pageTitle}"></title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" th:href="@{../css/base.css}">
+		<link rel="icon" th:href="@{../img/favicon.ico}">
+	</head>
+	<body>
+		<header th:insert="base/navigation::navFragment"></header>
+		<div id="subHeader" th:insert="base/caption::captionFragment"></div>
+		<br>
+		<main>
+			<div class="container">
+				<div class="content">
+				<!-- ================================================================================================================================== -->
+					<h2>Викладачі</h2>
+					
+					<div class="row">
+						<div class="col-md-12">
+							<a th:href="@{/teachers/create}" class="btn btn-dark btn-sm my-3 px-5">Додати викладача</a>
+						</div>
+					</div>
+					
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Ім'я</th>
+								<th>Прізвище</th>
+								<th>Предмет</th>
+								<th>Управління</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="teacher : ${teachersList}">
+								<td th:text="${teacher.getFirstName()}"></td>
+								<td th:text="${teacher.getLastName()}"></td>
+								<td th:text="${teacher.getSubject()}"></td>
+								<td>
+									<a class="btn btn-sm btn-warning" th:href="@{/teachers/update/{id}(id=${teacher.getId()})}">Змінити</a>
+									<a class="btn btn-sm btn-danger" th:href="@{/teachers/delete/{id}(id=${teacher.getId()})}">Видалити</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<!-- ================================================================================================================================== -->
+				</div>
+			</div>
+		</main>
+		<footer th:insert="base/footer::footerFragment">
+			
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

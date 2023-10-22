@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+main {
+	text-align: center;
+}
+
+#subHeader {
+	text-align: center;
+	margin-top: 30px;
+}
+
+h1 {
+	color: darkkhaki;
+}
+
+h2 {
+	color: forestgreen;
+}
+
+h6 {
+	color: slateblue;
+}
